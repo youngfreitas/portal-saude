@@ -108,7 +108,7 @@ export default async function Home() {
 
       <section className="su-container su-section">
         <Card accent="accent">
-          <div className="su-layout-aside" style={{ gridTemplateColumns: 'minmax(0,1fr) auto', alignItems: 'center' }}>
+          <div className="su-cta">
             <div>
               <div className="su-overline">A Secretaria</div>
               <h2 style={{ margin: 'var(--space-2) 0 var(--space-3)' }}>Conheça a estrutura da Secretaria de Saúde</h2>

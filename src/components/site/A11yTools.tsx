@@ -25,8 +25,8 @@ export function A11yTools() {
     <>
       <Link href="/acessibilidade"><Icon name="accessibility" size="sm" />Acessibilidade</Link>
       <span className="su-row" style={{ gap: 4 }} role="group" aria-label="Tamanho do texto">
-        <button type="button" aria-label="Diminuir texto" onClick={() => set({ ...p, scale: Math.max(0.85, +(p.scale - 0.1).toFixed(2)) })}>A−</button>
-        <button type="button" aria-label="Aumentar texto" onClick={() => set({ ...p, scale: Math.min(1.4, +(p.scale + 0.1).toFixed(2)) })}>A+</button>
+        <button type="button" aria-label="A− diminuir texto" onClick={() => set({ ...p, scale: Math.max(0.85, +(p.scale - 0.1).toFixed(2)) })}>A−</button>
+        <button type="button" aria-label="A+ aumentar texto" onClick={() => set({ ...p, scale: Math.min(1.4, +(p.scale + 0.1).toFixed(2)) })}>A+</button>
       </span>
       <button type="button" aria-pressed={p.contrast} onClick={() => set({ ...p, contrast: !p.contrast })}><Icon name="contrast" size="sm" />Alto contraste</button>
     </>

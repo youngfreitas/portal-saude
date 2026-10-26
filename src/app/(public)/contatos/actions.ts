@@ -20,16 +20,16 @@ export async function sendContact(_prev: ContactState, form: FormData): Promise<
   const h = await headers();
   const ip = (h.get('x-forwarded-for') ?? 'local').split(',')[0].trim();
 
-  // anti-spam: campo isca preenchido ou envio rápido demais → finge sucesso sem gravar
-  const started = Number(raw.t);
-  if (raw.website || !started || Date.now() - started < MIN_FILL_MS) return { ok: true };
-
   const parsed = contactSchema.safeParse(raw);
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
     for (const i of parsed.error.issues) fieldErrors[String(i.path[0])] ??= i.message;
     return { fieldErrors, values: raw, error: 'Revise os campos destacados.' };
   }
+  // anti-spam (após validar, para que pessoas vejam os erros): isca preenchida ou envio rápido demais → finge sucesso sem gravar
+  const started = Number(raw.t);
+  if (raw.website || !started || Date.now() - started < MIN_FILL_MS) return { ok: true };
+
   const ipKey = 'contact:' + createHash('sha256').update(ip).digest('hex').slice(0, 24);
   if (!(await allow(ipKey, 3, 60 * 60_000))) return { error: 'Muitos envios em pouco tempo. Tente novamente mais tarde.', values: raw };
   if (!(await verifyTurnstile(raw['cf-turnstile-response'] ?? null, ip))) return { error: 'Não foi possível validar o desafio anti-spam. Tente novamente.', values: raw };

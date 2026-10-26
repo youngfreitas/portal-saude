@@ -116,3 +116,6 @@ button.su-org__node:hover{background:var(--blue-sus-50)}
 
 /* Vacina / calendário */
 .su-cal th,.su-cal td{vertical-align:top}
+
+.su-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-8);align-items:center}
+@media (max-width:1024px){.su-cta{grid-template-columns:minmax(0,1fr);gap:var(--space-5)}}

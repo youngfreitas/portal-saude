@@ -22,5 +22,5 @@ export function Brandmark({ variant = 'full', tone = 'dark', size = 48, href }: 
     </>
   );
   const cls = cx('su-brandmark', tone === 'light' && 'su-brandmark--light');
-  return href ? <Link href={href} className={cls} aria-label="Secretaria de Saúde de Ubatuba — página inicial">{inner}</Link> : <span className={cls}>{inner}</span>;
+  return href ? <Link href={href} className={cls}>{inner}</Link> : <span className={cls}>{inner}</span>;
 }

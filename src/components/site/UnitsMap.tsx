@@ -62,14 +62,14 @@ export function UnitsMap({ all, categories, initialSlug }: { all: MapUnit[]; cat
         <Field label="Categoria" htmlFor="m-cat"><Select id="m-cat" value={cat} onChange={(e) => setCat(e.target.value)} placeholder="Todas" options={categories.map((c) => ({ value: c.id, label: c.name }))} /></Field>
         <Field label="Bairro" htmlFor="m-hood"><Select id="m-hood" value={hood} onChange={(e) => setHood(e.target.value)} placeholder="Todos" options={hoods} /></Field>
         <p className="su-muted" aria-live="polite" style={{ margin: 0 }}>{visible.length} {visible.length === 1 ? 'unidade' : 'unidades'} no mapa</p>
-        <div className="su-map-list" role="list">
+        <ul className="su-map-list" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {visible.map((u) => (
-            <button key={u.slug} role="listitem" type="button" aria-pressed={selected === u.slug} onClick={() => setSelected(u.slug)}>
+            <li key={u.slug}><button type="button" aria-pressed={selected === u.slug} onClick={() => setSelected(u.slug)}>
               <strong style={{ fontFamily: 'var(--font-display)' }}>{u.name}</strong><br />
               <span className="su-muted" style={{ fontSize: 'var(--fs-caption)' }}>{[u.neighborhood, u.category].filter(Boolean).join(' · ')}</span>
-            </button>
+            </button></li>
           ))}
-        </div>
+        </ul>
       </div>
       <div className="su-stack">
         <ConsentGate what="mapa (OpenStreetMap)">
