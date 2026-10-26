@@ -34,3 +34,8 @@ Veja `.env.example` (banco, `SITE_URL`, admin inicial, armazenamento, SMTP opcio
 
 ## Mais
 - [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) · [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md) · [`docs/LGPD.md`](docs/LGPD.md)
+
+## Rodar no GitHub (Codespaces), sem instalar nada
+1. No repositório: **Code → Codespaces → Create codespace on `claude/happy-babbage-iwmdzy`**.
+2. Aguarde: o ambiente instala dependências, sobe o PostgreSQL, aplica migrações e a semente, e inicia `npm run dev`.
+3. Abra a porta **3000** (aba *Ports*). Painel em `/admin` — login `admin@example.com` / `Troque-esta-senha-123` (**troque a senha em Usuários**; valores definidos em `.devcontainer/devcontainer.json`).
