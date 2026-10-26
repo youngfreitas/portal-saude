@@ -1,0 +1,130 @@
+/* Saúde Ubatuba Design System — generated from tokens.json */
+:root, [data-theme="light"] {
+  --blue-sus-900: #003a6e;
+  --blue-sus-800: #004a8d;
+  --blue-sus-700: #005aab;
+  --blue-sus-600: #0a6cc0;
+  --blue-sus-100: #dceaf7;
+  --blue-sus-50: #f0f6fc;
+  --blue-pmu-900: #00445f;
+  --blue-pmu-800: #00618c;
+  --blue-pmu-700: #1478a5;
+  --blue-pmu-600: #1d8dbf;
+  --blue-pmu-400: #5cb2d8;
+  --blue-pmu-200: #b7deef;
+  --blue-pmu-100: #e3f2f9;
+  --red-brasao: #da251c;
+  --red-brasao-dark: #a81a13;
+  --red-brasao-100: #fbe0de;
+  --yellow-brasao: #fff400;
+  --yellow-brasao-dark: #e0c400;
+  --green-brasao: #00923e;
+  --green-brasao-dark: #00702f;
+  --green-brasao-100: #d9f0e2;
+  --cyan-agua: #0095d4;
+  --neutral-900: #1b1f23;
+  --neutral-800: #2f3945;
+  --neutral-700: #48545f;
+  --neutral-600: #63707c;
+  --neutral-500: #8a959f;
+  --neutral-400: #b4bcc4;
+  --neutral-300: #d5dbe0;
+  --neutral-200: #e7ebef;
+  --neutral-100: #f2f5f8;
+  --neutral-50: #f8fafb;
+  --white: #ffffff;
+  --text-strong: var(--neutral-900);
+  --text-body: var(--neutral-800);
+  --text-muted: var(--neutral-600);
+  --text-disabled: var(--neutral-500);
+  --text-on-brand: var(--white);
+  --text-link: var(--blue-sus-700);
+  --text-link-hover: var(--blue-sus-900);
+  --surface-page: var(--neutral-50);
+  --surface-card: var(--white);
+  --surface-subtle: var(--neutral-100);
+  --surface-brand: var(--blue-sus-700);
+  --surface-brand-soft: var(--blue-sus-50);
+  --surface-accent: var(--blue-pmu-600);
+  --surface-accent-soft: var(--blue-pmu-100);
+  --surface-inverse: var(--blue-sus-900);
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong: var(--neutral-400);
+  --border-brand: var(--blue-sus-700);
+  --border-focus: var(--blue-pmu-600);
+  --action-primary: var(--blue-sus-700);
+  --action-primary-hover: var(--blue-sus-800);
+  --action-primary-active: var(--blue-sus-900);
+  --action-secondary: var(--blue-pmu-600);
+  --action-secondary-hover: var(--blue-pmu-700);
+  --action-danger: var(--red-brasao);
+  --action-danger-hover: var(--red-brasao-dark);
+  --status-success: var(--green-brasao);
+  --status-success-soft: var(--green-brasao-100);
+  --status-warning: var(--yellow-brasao-dark);
+  --status-warning-soft: #fff8c2;
+  --status-warning-text: #6f6100;
+  --status-danger: var(--red-brasao);
+  --status-danger-soft: var(--red-brasao-100);
+  --status-info: var(--blue-pmu-600);
+  --status-info-soft: var(--blue-pmu-100);
+  --overlay-scrim: rgba(0,58,110,.55);
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0,58,110,.08);
+  --shadow-sm: 0 1px 3px rgba(0,58,110,.10),0 1px 2px rgba(0,58,110,.06);
+  --shadow-md: 0 4px 12px rgba(0,58,110,.10);
+  --shadow-lg: 0 10px 28px rgba(0,58,110,.14);
+  --shadow-xl: 0 20px 48px rgba(0,58,110,.18);
+  --shadow-inset-top: inset 0 1px 0 rgba(255,255,255,.35);
+  --focus-ring: 0 0 0 3px rgba(29,141,191,.45);
+  --focus-ring-danger: 0 0 0 3px rgba(218,37,28,.35);
+}
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+  --gradient-sus: linear-gradient(135deg,#005aab 0%,#003a6e 100%);
+  --gradient-pmu: linear-gradient(135deg,#1d8dbf 0%,#00618c 100%);
+  --border-width-hairline: 1px;
+  --border-width-thick: 2px;
+  --border-width-accent: 4px;
+  --container-sm: 720px;
+  --container-md: 960px;
+  --container-lg: 1200px;
+  --container-xl: 1320px;
+  --control-h-sm: 32px;
+  --control-h-md: 40px;
+  --control-h-lg: 48px;
+  --control-h-touch: 52px;
+  --font-display: "Raleway","Segoe UI",sans-serif;
+  --font-body: "Open Sans","Segoe UI",sans-serif;
+  --font-mono: "Roboto Mono",ui-monospace,monospace;
+}
+.display-1 { font-family: var(--font-display); font-size: 56px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+.display-2 { font-family: var(--font-display); font-size: 44px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+.h1 { font-family: var(--font-display); font-size: 34px; line-height: 1.22; font-weight: 700; letter-spacing: -0.01em; }
+.h2 { font-family: var(--font-display); font-size: 26px; line-height: 1.22; font-weight: 700; letter-spacing: -0.01em; }
+.h3 { font-family: var(--font-display); font-size: 21px; line-height: 1.4; font-weight: 600; }
+.h4 { font-family: var(--font-display); font-size: 18px; line-height: 1.4; font-weight: 600; }
+.body-default { font-family: var(--font-body); font-size: 15px; line-height: 1.6; font-weight: 400; }
+.body-strong { font-family: var(--font-body); font-size: 15px; line-height: 1.6; font-weight: 600; }
+.caption { font-family: var(--font-body); font-size: 13px; line-height: 1.4; font-weight: 400; }
+.overline { font-family: var(--font-display); font-size: 12px; line-height: 1.4; font-weight: 700; letter-spacing: 0.09em; }
+.mono { font-family: var(--font-mono); font-size: 14px; line-height: 1.6; font-weight: 400; }

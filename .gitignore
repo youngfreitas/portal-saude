@@ -1,0 +1,12 @@
+node_modules
+.next
+.env
+.env.local
+storage/*
+!storage/.gitkeep
+public/icons
+*.tsbuildinfo
+next-env.d.ts
+test-results
+playwright-report
+shots
