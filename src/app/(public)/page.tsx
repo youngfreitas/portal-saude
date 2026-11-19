@@ -47,12 +47,12 @@ export default async function Home() {
             </div>
           </div>
           <Card style={{ borderRadius: 'var(--radius-xl)' }}>
-            <form action="/busca" role="search">
+            <form action="/busca" role="search" className="su-hero__search">
               <div className="su-overline">Busca rápida</div>
-              <h2 style={{ font: 'var(--text-h3)', margin: 'var(--space-2) 0 var(--space-4)' }}>O que você procura?</h2>
+              <h2 style={{ font: 'var(--text-h3)', margin: 'var(--space-2) 0 0' }}>O que você procura?</h2>
               <label htmlFor="busca-hero" className="su-sr-only">Buscar no portal</label>
               <Input id="busca-hero" name="q" placeholder="Unidade, serviço, notícia…" icon={<Icon name="search" size="sm" />} />
-              <Button type="submit" fullWidth className="" >Buscar</Button>
+              <Button type="submit" fullWidth>Buscar</Button>
             </form>
             <p className="su-muted" style={{ fontSize: 'var(--fs-caption)', margin: 'var(--space-3) 0 0' }}>Emergência: ligue para o SAMU <strong>192</strong>.</p>
           </Card>

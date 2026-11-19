@@ -58,6 +58,7 @@
 .su-hero__in{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:var(--space-12);align-items:center;padding-block:var(--space-16)}
 .su-hero h1{font:var(--text-display-2);letter-spacing:var(--ls-display);color:var(--white);margin:var(--space-3) 0 var(--space-4)}
 .su-hero .su-overline{color:rgba(255,255,255,.9)}
+.su-hero__search{display:flex;flex-direction:column;gap:var(--space-4)}
 .su-hero__lead{font-size:var(--fs-body-lg);color:rgba(255,255,255,.95);max-width:52ch}
 .su-hero__cta{display:flex;gap:var(--space-3);margin-top:var(--space-6);flex-wrap:wrap}
 @media (max-width:1024px){.su-hero__in{grid-template-columns:1fr;gap:var(--space-8);padding-block:var(--space-10)}}
@@ -84,10 +85,16 @@
 .su-article-cover{border-radius:var(--radius-lg);overflow:hidden;margin-bottom:var(--space-6)}
 
 /* Cookies */
-.su-cookie{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface-card);border-top:var(--border-width-accent) solid var(--action-primary);box-shadow:var(--shadow-xl);padding:var(--space-5) 0}
-.su-cookie__in{display:flex;gap:var(--space-6);align-items:center;justify-content:space-between;flex-wrap:wrap}
-.su-cookie__text{flex:1 1 420px;font-size:var(--fs-body-sm)}
-.su-cookie__text p{margin:0}
+.su-cookie{position:fixed;left:var(--space-6);bottom:var(--space-6);z-index:40;width:min(440px,calc(100vw - 2*var(--space-4)));display:flex;gap:var(--space-4);align-items:flex-start;background:var(--surface-card);border:1px solid var(--border-subtle,rgba(0,0,0,.08));border-radius:var(--radius-xl);box-shadow:0 12px 40px rgba(0,40,60,.28);padding:var(--space-5);animation:su-cookie-in .35s ease-out}
+.su-cookie__icon{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--action-primary);color:var(--white);box-shadow:0 4px 12px rgba(0,97,140,.35)}
+.su-cookie__icon .su-icon{background-color:currentColor}
+.su-cookie__title{display:block;font-family:var(--font-display);font-size:var(--fs-body-lg);color:var(--text-strong);margin-bottom:var(--space-1)}
+.su-cookie__body p{margin:0;font-size:var(--fs-body-sm);line-height:1.5}
+.su-cookie__actions{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;margin-top:var(--space-4)}
+.su-cookie__link{background:none;border:0;padding:var(--space-2);font:inherit;font-size:var(--fs-body-sm);font-weight:600;color:var(--action-primary);text-decoration:underline;cursor:pointer}
+@keyframes su-cookie-in{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.su-cookie{animation:none}}
+@media (max-width:520px){.su-cookie{left:var(--space-4);right:var(--space-4);bottom:var(--space-4);width:auto;flex-direction:column}}
 .su-consent-gate{border:1px dashed var(--border-strong);border-radius:var(--radius-md);padding:var(--space-6);background:var(--surface-subtle);text-align:center}
 
 /* Organograma */
