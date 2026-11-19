@@ -13,6 +13,7 @@ export default async function PublicLayout({ children }: { children: React.React
   return (
     <>
       <a href="#conteudo" className="su-skip">Ir para o conteúdo</a>
+      {s.demo_mode === '1' && <div className="su-demo" role="note"><span>Ambiente de demonstração</span> · os dados exibidos são fictícios e servem apenas para apresentação.</div>}
       <Header prefeituraUrl={s.prefeitura_url} ombudsmanUrl={s.ombudsman_url} />
       <main id="conteudo" tabIndex={-1}>{children}</main>
       <Footer s={s} socials={socials} />

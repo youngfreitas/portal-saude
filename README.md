@@ -20,6 +20,9 @@ Nenhum endereço, telefone, responsável ou coordenada foi inventado. A semente 
 setores genéricos do organograma, campanhas nacionais, calendário nacional de vacinação com fonte). Todo dado oficial ausente aparece no
 portal como **“Informação pendente de confirmação oficial”**. O mapa só exibe unidades cuja coordenada foi marcada como *verificada* no painel.
 
+## Demonstração
+`npm run db:seed:demo` cria dados **fictícios** (unidades, responsáveis, notícias, campanhas, contatos) e liga o aviso “Ambiente de demonstração”. Imagens: veja [`docs/PROMPTS-IMAGENS.md`](docs/PROMPTS-IMAGENS.md) — salve em `demo-images/` e rode o comando de novo. Para desligar o aviso, esvazie `demo_mode` em *Configurações*.
+
 ## Scripts
 
 | Comando | O que faz |
