@@ -71,8 +71,7 @@ if (pdf.ok) await save(PDF_TO, Buffer.from(await pdf.arrayBuffer())); else log('
 const index = [];
 const groupOf = (r) => (r.startsWith('/unidades/') && r !== '/unidades/mapa' ? 'Unidades' : r.startsWith('/servicos/') && !['/servicos/vacinacao', '/servicos/tratamentos'].includes(r) ? 'Serviços' : r.startsWith('/campanhas/') ? 'Campanhas' : r.startsWith('/noticias/') ? 'Notícias' : null);
 for (const { route, html } of out) {
-  const tag = '<script src="/demo-static.js" defer></script>';
-  const page = html.includes('</body>') ? html.replace('</body>', tag + '</body>') : html + tag;
+  const page = html.replace(/<head[^>]*>/, (m) => m + '<script src="/demo-static.js"></script>');
   await save(route === '/' ? 'index.html' : `${route.slice(1)}/index.html`, page);
   const g = groupOf(route);
   if (g) index.push({ g, t: title(html), u: route, d: meta(html, 'description').slice(0, 140), x: textOf((html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0]).slice(0, 4000) });
@@ -81,10 +80,10 @@ await save('search-index.json', JSON.stringify(index));
 
 // Página 404 e arquivos auxiliares (robots/sitemap).
 const nf = await get('/pagina-nao-encontrada-404');
-if (nf.status === 404) { const h = rewrite(await nf.text()); await save('404.html', h.replace('</body>', '<script src="/demo-static.js" defer></script></body>')); }
+if (nf.status === 404) { const h = rewrite(await nf.text()); await save('404.html', h.replace(/<head[^>]*>/, (m) => m + '<script src="/demo-static.js"></script>')); }
 for (const f of ['/robots.txt', '/sitemap.xml']) { const r = await get(f); if (r.ok) await save(f.slice(1), Buffer.from(await r.arrayBuffer())); }
-for (const f of ['_worker.js', '_headers', 'demo-static.js']) await cp(path.join('scripts/cloudflare', f), path.join(OUT, f));
-await writeFile(path.join(OUT, 'LEIA-ME.txt'), `Portal Saúde Ubatuba — versão estática de demonstração\n\nCloudflare Pages > Create application > Pages > Upload assets > envie ESTE .zip (ou a pasta já extraída).\nDados fictícios. Veja docs/CLOUDFLARE.md no repositório para detalhes e limitações.\n`);
+for (const f of ['_headers', '_redirects', 'demo-static.js']) await cp(path.join('scripts/cloudflare', f), path.join(OUT, f));
+await writeFile(path.join(OUT, 'LEIA-ME.txt'), `Portal Saúde Ubatuba — versão estática de demonstração\n\nSite 100% estático. Cloudflare: Pages (Direct Upload) ou Workers (Static Assets) — envie este .zip ou a pasta extraída.\nDados fictícios. Veja docs/CLOUDFLARE.md no repositório para detalhes e limitações.\n`);
 
 // .zip (arquivos na raiz, como a Cloudflare espera)
 const files = {};

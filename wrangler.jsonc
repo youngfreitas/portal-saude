@@ -1,0 +1,6 @@
+{
+  // Publicação por linha de comando (Cloudflare Workers com arquivos estáticos): npx wrangler deploy
+  "name": "portal-saude-demo",
+  "compatibility_date": "2025-10-01",
+  "assets": { "directory": "./dist-demo", "not_found_handling": "404-page" }
+}

@@ -4,6 +4,24 @@
   var norm = function (s) { return String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim(); };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
 
+  /* 0. Sem servidor: responde localmente ao que o Next.js e o site pediriam ao servidor (pré-carregamento RSC e /api). */
+  var realFetch = window.fetch ? window.fetch.bind(window) : null;
+  if (realFetch) {
+    window.fetch = function (input, init) {
+      try {
+        var raw = typeof input === 'string' ? input : input && input.url ? input.url : String(input);
+        var u = new URL(raw, location.href);
+        if (u.origin === location.origin) {
+          var h = (init && init.headers) || (input && input.headers);
+          var rsc = u.searchParams.has('_rsc') || (h && (typeof h.get === 'function' ? h.get('rsc') : h.rsc || h.RSC));
+          if (rsc) return Promise.resolve(new Response('', { status: 404 }));
+          if (u.pathname.indexOf('/api/') === 0) return Promise.resolve(new Response(null, { status: 204 }));
+        }
+      } catch (_) {}
+      return realFetch(input, init);
+    };
+  }
+
   /* 1. Links internos: carregamento normal da página (evita requisições RSC que não existem em hospedagem estática). */
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
