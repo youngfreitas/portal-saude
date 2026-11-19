@@ -46,16 +46,29 @@ export default async function Home() {
               <Button variant="outline-inverse" size="lg" href="/servicos">Ver serviços</Button>
             </div>
           </div>
-          <Card style={{ borderRadius: 'var(--radius-xl)' }}>
-            <form action="/busca" role="search">
-              <div className="su-overline">Busca rápida</div>
-              <h2 style={{ font: 'var(--text-h3)', margin: 'var(--space-2) 0 var(--space-4)' }}>O que você procura?</h2>
+          <div className="su-hero-card">
+            <div className="su-hero-card__head">
+              <span className="su-hero-card__badge" aria-hidden="true"><Icon name="search" size="lg" /></span>
+              <div>
+                <h2>O que você procura?</h2>
+                <p>Unidades, serviços, campanhas e notícias.</p>
+              </div>
+            </div>
+            <form action="/busca" role="search" className="su-hero-card__form">
               <label htmlFor="busca-hero" className="su-sr-only">Buscar no portal</label>
-              <Input id="busca-hero" name="q" placeholder="Unidade, serviço, notícia…" icon={<Icon name="search" size="sm" />} />
-              <Button type="submit" fullWidth className="" >Buscar</Button>
+              <Input id="busca-hero" name="q" placeholder="Ex.: vacina, UBS, farmácia…" icon={<Icon name="search" size="sm" />} />
+              <Button type="submit">Buscar</Button>
             </form>
-            <p className="su-muted" style={{ fontSize: 'var(--fs-caption)', margin: 'var(--space-3) 0 0' }}>Emergência: ligue para o SAMU <strong>192</strong>.</p>
-          </Card>
+            <div className="su-hero-card__chips" aria-label="Buscas frequentes">
+              {[['syringe', 'Vacinação'], ['map-pin', 'Unidades'], ['pill', 'Farmácia'], ['baby', 'Pré-natal']].map(([icon, q]) => (
+                <Link key={q} href={`/busca?q=${encodeURIComponent(q)}`} className="su-chip"><Icon name={icon} size="sm" />{q}</Link>
+              ))}
+            </div>
+            <div className="su-hero-card__help">
+              <a href="tel:192" className="su-hero-card__sos"><Icon name="ambulance" size="lg" /><span><small>Emergência</small><strong>SAMU 192</strong></span></a>
+              <a href="tel:136" className="su-hero-card__sos su-hero-card__sos--alt"><Icon name="phone-call" size="lg" /><span><small>Disque Saúde</small><strong>136</strong></span></a>
+            </div>
+          </div>
         </div>
       </section>
 

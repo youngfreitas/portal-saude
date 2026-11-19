@@ -15,6 +15,7 @@ export const SETTING_FIELDS = [
   { key: 'lgpd_dpo_name', label: 'Encarregado (DPO) — nome', group: 'LGPD' },
   { key: 'lgpd_dpo_email', label: 'Encarregado (DPO) — e-mail', group: 'LGPD' },
   { key: 'ombudsman_url', label: 'Link da Ouvidoria', group: 'Canais' },
+  { key: 'demo_mode', label: 'Modo demonstração (1 = ativo)', group: 'Demonstração', hint: 'Exibe o aviso “dados fictícios” no topo do site. Deixe vazio em produção.' },
   { key: 'prefeitura_url', label: 'Portal da Prefeitura', group: 'Canais' },
 ] as const;
 

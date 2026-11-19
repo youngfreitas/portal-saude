@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button, Dialog, Switch } from '@/components/ds';
+import { Button, Dialog, Icon, Switch } from '@/components/ds';
 import { CONSENT_COOKIE, CONSENT_VERSION, parseConsent, type Consent } from '@/lib/consent';
 
 export const OPEN_EVENT = 'su:open-cookies';
@@ -45,15 +45,14 @@ export function CookieManager() {
     <>
       {!saved && !dialog && (
         <div className="su-cookie" role="region" aria-label="Aviso de cookies">
-          <div className="su-container su-cookie__in">
-            <div className="su-cookie__text">
-              <strong style={{ fontFamily: 'var(--font-display)' }}>Sua privacidade importa</strong>
-              <p>Usamos cookies necessários para o portal funcionar. Os demais só são ativados se você permitir. Veja a <Link href="/cookies">Política de Cookies</Link> e a <Link href="/privacidade">Política de Privacidade</Link>.</p>
-            </div>
-            <div className="su-row">
-              <Button variant="secondary" onClick={() => setDialog(true)}>Personalizar</Button>
-              <Button variant="secondary" onClick={() => save(false, false)}>Rejeitar não necessários</Button>
+          <div className="su-cookie__icon" aria-hidden="true"><Icon name="cookie" size="xl" /></div>
+          <div className="su-cookie__body">
+            <strong className="su-cookie__title">Sua privacidade importa</strong>
+            <p>Usamos cookies necessários para o portal funcionar. Os demais só são ativados se você permitir. Veja a <Link href="/cookies">Política de Cookies</Link> e a <Link href="/privacidade">Política de Privacidade</Link>.</p>
+            <div className="su-cookie__actions">
               <Button onClick={() => save(true, true)}>Aceitar todos</Button>
+              <Button variant="secondary" onClick={() => save(false, false)}>Rejeitar não necessários</Button>
+              <button type="button" className="su-cookie__link" onClick={() => setDialog(true)}>Personalizar</button>
             </div>
           </div>
         </div>
