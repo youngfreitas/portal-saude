@@ -5,7 +5,7 @@ import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { and, eq, inArray, isNull } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -18,10 +18,25 @@ const IMG_DIR = path.resolve('demo-images');
 const STORAGE = path.resolve(process.env.STORAGE_DIR ?? './storage');
 const WIDTHS = [480, 960, 1600];
 
-/** Importa demo-images/<nome>.(jpg|jpeg|png|webp) para a mídia do portal. Sem arquivo → null (o site usa o brasão). */
+const EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+const wanted = new Set<string>();
+const imported = new Set<string>();
+const usedFiles = new Set<string>();
+
+/** Acha o arquivo ignorando maiúsculas/minúsculas na extensão e no nome (HERO.JPG = hero.jpg). */
+function findFile(name: string): string | null {
+  if (!existsSync(IMG_DIR)) return null;
+  const f = readdirSync(IMG_DIR).find((x) => EXTS.includes(path.extname(x).toLowerCase()) && path.basename(x, path.extname(x)).trim().toLowerCase() === name.toLowerCase());
+  return f ? path.join(IMG_DIR, f) : null;
+}
+
+/** Importa demo-images/<nome>.(jpg|jpeg|png|webp|avif) para a mídia do portal. Sem arquivo → null (o site usa o brasão). */
 async function img(name: string, alt: string): Promise<number | null> {
-  const file = ['jpg', 'jpeg', 'png', 'webp'].map((e) => path.join(IMG_DIR, `${name}.${e}`)).find(existsSync);
+  wanted.add(name);
+  const file = findFile(name);
   if (!file) return null;
+  usedFiles.add(path.basename(file));
+  imported.add(name);
   const [dup] = await db.select().from(s.media).where(eq(s.media.originalName, `demo:${name}`));
   if (dup) return dup.id;
   const buf = await sharp(file).rotate().toBuffer();
@@ -217,8 +232,13 @@ async function main() {
   await campaignsDemo();
   await contactsDemo();
   await socialDemo();
-  const found = await db.select({ n: s.media.originalName }).from(s.media).where(inArray(s.media.kind, ['image']));
-  console.log(`Demonstração pronta. Imagens importadas: ${found.filter((f) => f.n.startsWith('demo:')).length} (coloque arquivos em demo-images/ e rode de novo para adicionar mais).`);
+  const missing = [...wanted].filter((n) => !imported.has(n));
+  const all = existsSync(IMG_DIR) ? readdirSync(IMG_DIR).filter((f) => !f.startsWith('.')) : [];
+  const ignored = all.filter((f) => !usedFiles.has(f));
+  console.log(`\nPasta de imagens: ${IMG_DIR}${existsSync(IMG_DIR) ? '' : '  (NÃO EXISTE)'}`);
+  console.log(`Imagens importadas (${imported.size}/${wanted.size}): ${[...imported].join(', ') || 'nenhuma'}`);
+  if (missing.length) console.log(`Faltando (nome esperado, qualquer extensão jpg/png/webp): ${missing.join(', ')}`);
+  if (ignored.length) console.log(`Arquivos na pasta com nome NÃO reconhecido (renomeie): ${ignored.join(', ')}`);
 }
 
 main().then(() => pool.end()).catch((e) => { console.error(e); process.exit(1); });
