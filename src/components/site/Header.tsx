@@ -34,13 +34,13 @@ export function Header({ prefeituraUrl, ombudsmanUrl }: { prefeituraUrl: string;
       </div>
       <div className="su-band">
         <div className="su-container su-band__in">
-          <Brandmark tone="light" size={52} href="/" />
+          <Brandmark size={56} href="/" />
           <div className="su-band__actions">
             <form role="search" onSubmit={search} className="su-search su-search--desktop">
               <label htmlFor="busca-topo" className="su-sr-only">Buscar no portal</label>
               <Input id="busca-topo" name="q" type="search" placeholder="Buscar no portal" icon={<Icon name="search" size="sm" />} />
             </form>
-            <Button variant="inverse" size="sm" href="/contatos"><Icon name="message-square" size="sm" /><span className="su-hide-sm">Fale conosco</span></Button>
+            <Button size="sm" href="/contatos"><Icon name="message-square" size="sm" /><span className="su-hide-sm">Fale conosco</span></Button>
           </div>
         </div>
       </div>

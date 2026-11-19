@@ -1,0 +1,60 @@
+/* Tema alinhado ao portal da Prefeitura de Ubatuba (www.ubatuba.sp.gov.br):
+   azul-marinho #0b3d6b, azul #185fa5, verde #1d9e75, fundo #f8f8ff, cartões de 16px,
+   títulos pesados (800) com tracking apertado e fonte de sistema. Carregado por último. */
+:root, [data-theme="light"] {
+  --blue-sus-900:#0b3d6b; --blue-sus-800:#124f8a; --blue-sus-700:#185fa5; --blue-sus-600:#2a73b8;
+  --blue-sus-100:#dbe9f6; --blue-sus-50:#eef5fb;
+  --green-brasao:#1d9e75; --green-brasao-dark:#0f6e56; --green-brasao-100:#d8f1e8;
+  --neutral-900:#16181d; --neutral-700:#4d5662; --neutral-600:#4d5662; --neutral-200:#e9eaec; --neutral-100:#f4f6f8; --neutral-50:#f8f8ff;
+  --text-strong:#16181d; --text-body:#262c34; --text-muted:#4d5662;
+  --surface-page:#f8f8ff; --surface-subtle:#f4f6f8;
+  --border-subtle:#e9eaec;
+  --shadow-xs:0 1px 2px rgba(11,61,107,.06); --shadow-sm:0 1px 3px rgba(11,61,107,.08); --shadow-md:0 6px 18px rgba(11,61,107,.10);
+  --shadow-lg:0 12px 30px rgba(0,0,0,.10); --shadow-xl:0 20px 48px rgba(11,61,107,.18);
+  --radius-sm:8px; --radius-md:10px; --radius-lg:16px; --radius-xl:20px;
+  --gradient-sus:linear-gradient(135deg,#0b3d6b 0%,#185fa5 100%);
+  --gradient-pmu:linear-gradient(135deg,#0b3d6b 0%,#185fa5 55%,#1d9e75 100%);
+  --font-display:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --font-body:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --text-h1:var(--fw-extrabold) var(--fs-h1)/var(--lh-heading) var(--font-display);
+  --text-h2:var(--fw-extrabold) var(--fs-h2)/var(--lh-heading) var(--font-display);
+  --text-h3:var(--fw-bold) var(--fs-h3)/var(--lh-snug) var(--font-display);
+  --ls-heading:-0.025em;
+}
+body{-webkit-font-smoothing:antialiased}
+
+/* Faixa superior: informações/atalhos, como a barra de avisos da prefeitura */
+.su-topbar{background:#0b3d6b}
+
+/* Cabeçalho branco com brasão e identidade da Prefeitura */
+.su-band{background:var(--white);border-bottom:1px solid var(--border-subtle)}
+.su-band__in{padding-block:var(--space-3)}
+.su-brandmark img{filter:drop-shadow(0 2px 6px rgba(11,61,107,.18))}
+.su-brandmark__over{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;color:var(--text-muted)}
+.su-brandmark__name{font-weight:800;letter-spacing:-.02em;color:#0b3d6b}
+.su-band .su-input{background:#f4f6f8;border-color:transparent;border-radius:10px}
+.su-band .su-input:focus{background:var(--white);border-color:var(--border-focus)}
+
+/* Menu principal com sublinhado de destaque */
+.su-nav{box-shadow:none;border-bottom:1px solid var(--border-subtle)}
+.su-nav__list{gap:var(--space-2)}
+.su-nav__link{padding:12px;font-size:13.5px;font-weight:700;border-bottom:2.5px solid transparent;color:var(--text-strong)}
+.su-nav__link:hover,.su-nav__link[aria-current="page"]{color:#0b3d6b;box-shadow:none;border-bottom-color:#0b3d6b}
+
+/* Hero com degradê marinho → azul → verde */
+.su-hero__shade{background:linear-gradient(135deg,rgba(11,61,107,.93),rgba(24,95,165,.82) 60%,rgba(29,158,117,.72))}
+.su-hero h1{font-weight:800;letter-spacing:-.02em}
+.su-hero .su-card{border:0;box-shadow:0 18px 40px rgba(4,44,83,.28)}
+
+/* Cartões e controles */
+.su-card{border-color:var(--border-subtle);box-shadow:var(--shadow-xs)}
+.su-card--interactive:hover,.su-card--interactive:focus-within{box-shadow:0 12px 30px rgba(0,0,0,.10);transform:translateY(-3px)}
+.su-btn{font-weight:700;letter-spacing:0}
+.su-btn--primary{background:#185fa5}
+.su-btn--primary:hover{background:#0b3d6b}
+.su-btn--inverse{color:#0b3d6b}
+.su-overline{color:#185fa5}
+
+/* Rodapé azul-marinho */
+.su-footer{background:#0b3d6b;color:#bcd6ee}
+.su-footer__legal{border-top-color:rgba(255,255,255,.18)}
